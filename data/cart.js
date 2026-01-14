@@ -1,5 +1,21 @@
 export let amazonCart = JSON.parse(localStorage.getItem('amazonCart')) || [];
 
+loadFromStorage();
+
+export function loadFromStorage(){
+    if(!amazonCart){
+        amazonCart = [{
+            product_id : 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
+            quantity : 2,
+            deliveryOptionId : 1
+        }, {
+            product_id : '15b6fc6f-327a-4ec4-896f-486349e85a3d',
+            quantity : 1,
+            deliveryOptionId : 2
+        }];
+    }
+}
+
 
 function saveToCartStorage(){
     localStorage.setItem('amazonCart', JSON.stringify(amazonCart));
@@ -7,8 +23,10 @@ function saveToCartStorage(){
 
 export function addToCart(product_id){
 
-    const quantity_ele = document.querySelector(`.js-quantity-selector-${product_id}`);
-    let quantity_val = Number(quantity_ele.value);
+    // const quantity_ele = document.querySelector(`.js-quantity-selector-${product_id}`);
+    // let quantity_val = Number(quantity_ele.value);
+
+    let quantity_val = 1;
 
     let matchingItem;
 
@@ -19,7 +37,7 @@ export function addToCart(product_id){
         });
 
         if(matchingItem){
-            matchingItem.quantity = quantity_val;            
+            matchingItem.quantity += quantity_val;            
         }else{
             amazonCart.push({
                 product_id,
