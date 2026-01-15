@@ -20,7 +20,7 @@ export function renderOrderSummary(){
       let deliveryOption = optionsDel.getDeliveryOptions(deliveryOptionsId);
 
       cartSummaryHtml +=`
-          <div class="cart-item-container js-cart-item-container-${matchingProduct.id}">
+          <div class="cart-item-container js-cart-item-container-test js-cart-item-container-${matchingProduct.id}">
               <div class="delivery-date">
                 Delivery date: ${optionsDel.calculateDeliveryDate(deliveryOption.deiveryDate)}
               </div>
