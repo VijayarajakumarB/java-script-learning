@@ -43,6 +43,8 @@ products.forEach(data => {
             </select>
           </div>
 
+          ${data.sizeChartInfoLink()}
+
           <div class="product-spacer"></div>
 
           <div class="added-to-cart js-added-to-cart-${data.id}">
