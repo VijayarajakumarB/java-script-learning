@@ -1,5 +1,5 @@
 import * as cartModule from '../../data/cart.js';
-import * as productModule from '../../data/products.js';
+import * as productModule from '../../data/products-class-oop.js';
 import * as moneyModule from '../utils/money.js';
 import * as optionsDel from '../../data/deliveryOptions.js';
 import { rendePaymentSummary } from './paymentSummary.js';
@@ -34,7 +34,7 @@ export function renderOrderSummary(){
                     ${matchingProduct.name}
                   </div>
                   <div class="product-price">
-                    $${moneyModule.formatCurrency(matchingProduct.priceCents)}
+                    ${matchingProduct.getPrice()}
                   </div>
                   <div class="product-quantity">
                     <span>
