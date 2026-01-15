@@ -1,10 +1,10 @@
-import * as cartModule from '../../data/cart.js';
+import {cart} from '../../data/cart-class-oop.js';
 
 
 export function renderCheckoutHeader(){
 
     let cartQuantity = 0;
-    cartModule.amazonCart.forEach(cartItem => {
+    cart.amazonCart.forEach(cartItem => {
         cartQuantity += cartItem.quantity
     });
 

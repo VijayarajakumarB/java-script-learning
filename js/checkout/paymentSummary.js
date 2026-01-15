@@ -1,4 +1,4 @@
-import * as cartModule from '../../data/cart.js';
+import {cart} from '../../data/cart-class-oop.js';
 import * as productModule from '../../data/products.js';
 import * as optionsDel from '../../data/deliveryOptions.js';
 import * as moneyModule from '../utils/money.js';
@@ -10,7 +10,7 @@ export function rendePaymentSummary(){
     let productShippingCents = 0;
     let totalQuantity = 0;
 
-    cartModule.amazonCart.forEach(cartItem => {
+    cart.amazonCart.forEach(cartItem => {
 
         const cartProdId = cartItem.product_id;
         const cartProdQuantity = cartItem.quantity;
@@ -33,13 +33,6 @@ export function rendePaymentSummary(){
     const taxCents = totalBeforeTaxCents * 0.1;
 
     const totalCents = totalBeforeTaxCents + taxCents;
-
-    console.log(productPriceCents);
-    console.log(productShippingCents);
-    console.log(totalBeforeTaxCents);
-    console.log(taxCents);
-    console.log(totalCents);
-
 
     let paymentSummaryHtml = `
         <div class="payment-summary-title">

@@ -1,4 +1,4 @@
-import * as cartJs from '../data/cart.js';
+import {cart} from '../data/cart-class-oop.js';
 import {products} from '../data/products-class-oop.js';
 
 let prodHtml = '';
@@ -68,7 +68,7 @@ const addCartButtons = document.querySelectorAll('.js-add-cart-button');
 
 function updateCartQuantity(){
 
-   document.querySelector('.js-cart-quantity').innerHTML = cartJs.calculateCartQuantity();;
+   document.querySelector('.js-cart-quantity').innerHTML = cart.calculateCartQuantity();;
 
 }
 
@@ -80,7 +80,7 @@ addCartButtons.forEach(button => {
         let product_id = button.dataset.prodId;
         let timeOutSet = '';
 
-        cartJs.addToCart(product_id);
+        cart.addToCart(product_id);
         updateCartQuantity()
         
 

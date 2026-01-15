@@ -1,4 +1,4 @@
-import * as cartModule from '../../data/cart.js';
+import {cart} from '../../data/cart-class-oop.js';
 import * as productModule from '../../data/products-class-oop.js';
 import * as moneyModule from '../utils/money.js';
 import * as optionsDel from '../../data/deliveryOptions.js';
@@ -8,16 +8,19 @@ import { renderCheckoutHeader } from './checkoutHeader.js';
 
 export function renderOrderSummary(){
 
+  console.log(cart);
+
     let cartSummaryHtml = '';
 
-    cartModule.amazonCart.forEach(cartItem =>{
-
+    cart.amazonCart.forEach(cartItem =>{
       let productId = cartItem.product_id;
       let deliveryOptionsId = cartItem.deliveryOptionId;
 
       let matchingProduct = productModule.getProduct(productId);
-
+      console.log(matchingProduct);
+      console.log(deliveryOptionsId);
       let deliveryOption = optionsDel.getDeliveryOptions(deliveryOptionsId);
+      console.log(deliveryOption);
 
       cartSummaryHtml +=`
           <div class="cart-item-container js-cart-item-container-test js-cart-item-container-${matchingProduct.id}">
@@ -112,7 +115,7 @@ export function renderOrderSummary(){
   deleteLinks.forEach(link => {
       link.addEventListener('click', () => {
           let productId = link.dataset.prodId;
-          cartModule.removeFromCart(productId);
+          cart.removeFromCart(productId);
           renderOrderSummary();
         //   document.querySelector(`.js-cart-item-container-${productId}`).remove();
           rendePaymentSummary();
@@ -176,7 +179,7 @@ export function renderOrderSummary(){
           alert('Quantity must be atleast 1 and Less than 1000');
       }
 
-      cartModule.updateQuantity(productId, newQuantity);
+      cart.updateQuantity(productId, newQuantity);
 
     //   const quantityUpdate = document.querySelector(`.js-quantity-label-${productId}`);
     //   quantityUpdate.innerHTML = newQuantity;
@@ -196,7 +199,7 @@ export function renderOrderSummary(){
       checkedDt.addEventListener('click', ()=> {
           const productId = checkedDt.dataset.prodId;
           const newDeliveryOptionId = checkedDt.dataset.optId;
-          cartModule.updateDeliveryOptions(productId, newDeliveryOptionId);
+          cart.updateDeliveryOptions(productId, newDeliveryOptionId);
           renderOrderSummary();
           rendePaymentSummary();
           renderCheckoutHeader();

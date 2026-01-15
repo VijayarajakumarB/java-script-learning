@@ -16,11 +16,11 @@ class Cart {
             this.amazonCart = [{
                 product_id : 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
                 quantity : 2,
-                deliveryOptionId : 1
+                deliveryOptionId : '1'
             }, {
                 product_id : '15b6fc6f-327a-4ec4-896f-486349e85a3d',
                 quantity : 1,
-                deliveryOptionId : 2
+                deliveryOptionId : '2'
             }];
         }
     }
@@ -117,12 +117,5 @@ class Cart {
 
 }
 
-const cart = new Cart('cart-oop');
+export const cart = new Cart('cart-oop');
 const businessCart = new Cart('cart-business');
-
-
-cart.addToCart('3fdfe8d6-9a15-4979-b459-585b0d0545b9');
-
-
-console.log(cart);
-console.log(businessCart);
