@@ -8,8 +8,6 @@ import { renderCheckoutHeader } from './checkoutHeader.js';
 
 export function renderOrderSummary(){
 
-  console.log(cart);
-
     let cartSummaryHtml = '';
 
     cart.amazonCart.forEach(cartItem =>{
@@ -17,10 +15,7 @@ export function renderOrderSummary(){
       let deliveryOptionsId = cartItem.deliveryOptionId;
 
       let matchingProduct = productModule.getProduct(productId);
-      console.log(matchingProduct);
-      console.log(deliveryOptionsId);
       let deliveryOption = optionsDel.getDeliveryOptions(deliveryOptionsId);
-      console.log(deliveryOption);
 
       cartSummaryHtml +=`
           <div class="cart-item-container js-cart-item-container-test js-cart-item-container-${matchingProduct.id}">
