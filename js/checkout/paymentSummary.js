@@ -2,6 +2,7 @@ import {cart} from '../../data/cart-class-oop.js';
 import * as productModule from '../../data/products-class-oop.js';
 import * as optionsDel from '../../data/deliveryOptions.js';
 import * as moneyModule from '../utils/money.js';
+import { addOrders } from '../../data/orders.js';
 
 
 export function rendePaymentSummary(){
@@ -12,7 +13,7 @@ export function rendePaymentSummary(){
 
     cart.amazonCart.forEach(cartItem => {
 
-        const cartProdId = cartItem.product_id;
+        const cartProdId = cartItem.productId;
         const cartProdQuantity = cartItem.quantity;
         const cartDeliveryOptionId = cartItem.deliveryOptionId;
 
@@ -64,12 +65,37 @@ export function rendePaymentSummary(){
             <div class="payment-summary-money">$${moneyModule.formatCurrency(totalCents)}</div>
           </div>
 
-          <button class="place-order-button button-primary">
+          <button class="place-order-button button-primary js-place-order-button">
             Place your order
           </button>
     `;
 
 
     document.querySelector('.js-payment-summary').innerHTML = paymentSummaryHtml;
+
+
+    const orderButton = document.querySelector('.js-place-order-button');
+
+    orderButton.addEventListener('click', async ()=> {
+        try{
+            const response = await fetch('https://supersimplebackend.dev/orders', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({
+                cart : cart.amazonCart
+              })
+            });
+
+          const order = await response.json();
+
+          addOrders(order);
+        }catch(error){
+            console.error('unexpected error happened');
+        }
+        
+        window.location.href='orders.html';
+    });
 
 }

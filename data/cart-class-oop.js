@@ -14,11 +14,11 @@ class Cart {
 
         if(!this.amazonCart){
             this.amazonCart = [{
-                product_id : 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
+                productId : 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
                 quantity : 2,
                 deliveryOptionId : '1'
             }, {
-                product_id : '15b6fc6f-327a-4ec4-896f-486349e85a3d',
+                productId : '15b6fc6f-327a-4ec4-896f-486349e85a3d',
                 quantity : 1,
                 deliveryOptionId : '2'
             }];
@@ -30,9 +30,9 @@ class Cart {
     }
 
 
-    addToCart(product_id){
+    addToCart(productId){
 
-    // const quantity_ele = document.querySelector(`.js-quantity-selector-${product_id}`);
+    // const quantity_ele = document.querySelector(`.js-quantity-selector-${productId}`);
     // let quantity_val = Number(quantity_ele.value);
 
     let quantity_val = 1;
@@ -40,7 +40,7 @@ class Cart {
     let matchingItem;
 
     this.amazonCart.forEach(cartItem => {
-        if(product_id === cartItem.product_id){
+        if(productId === cartItem.productId){
             matchingItem = cartItem;
         }
     });
@@ -49,7 +49,7 @@ class Cart {
         matchingItem.quantity += quantity_val;            
     }else{
         this.amazonCart.push({
-            product_id,
+            productId,
             quantity : quantity_val,
             deliveryOptionId : '1'
         });
@@ -65,7 +65,7 @@ class Cart {
         const newCartArr = [];
 
         this.amazonCart.forEach(cart => {
-            if(cart.product_id !== productId){
+            if(cart.productId !== productId){
                 newCartArr.push(cart);
             }
         });
@@ -91,7 +91,7 @@ class Cart {
     updateQuantity(productId, newQuantity){
     
         this.amazonCart.forEach(cartItem => {
-            if(cartItem.product_id === productId){
+            if(cartItem.productId === productId){
                 cartItem.quantity = newQuantity;
             }
         });
@@ -105,7 +105,7 @@ class Cart {
         let matchingItem;
 
         this.amazonCart.forEach(cartItem => {
-            if(cartItem.product_id === productId){
+            if(cartItem.productId === productId){
                 cartItem.deliveryOptionId = newDeliveryOptionId;
             }
         });

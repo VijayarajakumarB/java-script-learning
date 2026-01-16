@@ -11,7 +11,7 @@ export function renderOrderSummary(){
     let cartSummaryHtml = '';
 
     cart.amazonCart.forEach(cartItem =>{
-      let productId = cartItem.product_id;
+      let productId = cartItem.productId;
       let deliveryOptionsId = cartItem.deliveryOptionId;
 
       let matchingProduct = productModule.getProduct(productId);
