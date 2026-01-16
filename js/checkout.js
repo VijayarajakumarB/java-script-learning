@@ -6,8 +6,19 @@ import {loadProducts} from '../data/products-class-oop.js';
 //import '../data/backend-practice.js';
 
 
-loadProducts(() => {
+new Promise((resolve) => {
+    loadProducts(() => {
+         resolve();
+    });
+}).then(() => {
     renderCheckoutHeader();
     renderOrderSummary();
     rendePaymentSummary();
 });
+
+
+/*loadProducts(() => {
+    renderCheckoutHeader();
+    renderOrderSummary();
+    rendePaymentSummary();
+});*/
