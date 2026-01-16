@@ -1,5 +1,5 @@
 import {cart} from '../../data/cart-class-oop.js';
-import * as productModule from '../../data/products.js';
+import * as productModule from '../../data/products-class-oop.js';
 import * as optionsDel from '../../data/deliveryOptions.js';
 import * as moneyModule from '../utils/money.js';
 
