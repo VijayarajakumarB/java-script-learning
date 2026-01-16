@@ -8,6 +8,6 @@ import {loadProducts} from '../data/products-class-oop.js';
 
 loadProducts(() => {
     renderCheckoutHeader();
-renderOrderSummary();
-rendePaymentSummary();
+    renderOrderSummary();
+    rendePaymentSummary();
 });
