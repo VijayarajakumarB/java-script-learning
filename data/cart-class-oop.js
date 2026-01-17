@@ -63,15 +63,12 @@ class Cart {
     removeFromCart(productId){
     
         const newCartArr = [];
-
         this.amazonCart.forEach(cart => {
             if(cart.productId !== productId){
                 newCartArr.push(cart);
             }
         });
-
-        amazonCart = newCartArr;
-
+        this.amazonCart = newCartArr;
         this.saveToCartStorage();
     }
 
