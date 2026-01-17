@@ -1,5 +1,5 @@
 import * as ordersModule from '../data/orders.js';
-import {products, loadProducts, getProduct} from '../data/products-class-oop.js';
+import {loadProducts, getProduct} from '../data/products-class-oop.js';
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 import {formatCurrency} from './utils/money.js';
 
@@ -10,8 +10,7 @@ new Promise((resolve) => {
         resolve();
     });
 }).then(() =>{
-    renderOrderHTML();
-    
+    renderOrderHTML();    
 });
 
 function renderOrderHTML(){
@@ -41,7 +40,7 @@ function renderOrderHTML(){
                 </div>
 
                 <div class="order-details-grid">
-                    ${orderedProductDetails(orderDetails.products)}
+                    ${orderedProductDetails(orderDetails.products, orderDetails.id)}
                 </div>
 
             </div>
@@ -53,7 +52,7 @@ function renderOrderHTML(){
 }
 
 
-function orderedProductDetails(orderedProducts){
+function orderedProductDetails(orderedProducts, orderId){
 
     let prodInfo;
     let orderProdDetHtml = '';
@@ -83,7 +82,7 @@ function orderedProductDetails(orderedProducts){
             </div>
 
             <div class="product-actions">
-            <a href="tracking.html">
+            <a href="tracking.html?orderId=${orderId}&productId=${orderedItem.productId}">
                 <button class="track-package-button button-secondary">
                 Track package
                 </button>
